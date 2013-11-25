@@ -1,9 +1,9 @@
-EasyStar.js Pathfinder Plugin for Phaser (http://phaser.io)
+EasyStar.js Pathfinder Plugin for Phaser
 ===========================================================
 
-Plugin for Phaser which includes Easystar.js
+Plugin for Phaser (http://phaser.io) which includes Easystar.js
 
-# Plugin
+## Plugin
 
 the plugin is located at `src/PathFinderPlugin.js`
 
@@ -14,5 +14,4 @@ This plugin relies on EasyStar.js (https://github.com/prettymuchbryce/easystarjs
 available.
 
 ## Contact
-Twitter: @casarock
-IRC (Freenode): casarock
+Twitter: @casarock //  IRC (Freenode): casarock
