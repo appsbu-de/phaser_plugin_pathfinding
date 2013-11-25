@@ -1,3 +1,9 @@
+/**
+ * Constructor.
+ *
+ * @param parent
+ * @constructor
+ */
 Phaser.Plugin.PathFinderPlugin = function (parent) {
 
     if (typeof EasyStar !== 'object') {
@@ -16,6 +22,13 @@ Phaser.Plugin.PathFinderPlugin = function (parent) {
 Phaser.Plugin.PathFinderPlugin.prototype = Object.create(Phaser.Plugin.prototype);
 Phaser.Plugin.PathFinderPlugin.prototype.constructor = Phaser.Plugin.PathFinderPlugin;
 
+/**
+ * Set Grid for Pathfinding.
+ *
+ * @param grid          Mapdata as a two dimensional array.
+ * @param walkables     Tiles which are walkable. Every other tile is marked as blocked.
+ * @param iterationsPerCount
+ */
 Phaser.Plugin.PathFinderPlugin.prototype.setGrid = function (grid, walkables, iterationsPerCount) {
     iterationsPerCount = iterationsPerCount || null;
 
@@ -30,10 +43,20 @@ Phaser.Plugin.PathFinderPlugin.prototype.setGrid = function (grid, walkables, it
     }
 };
 
+/**
+ * Set callback function (Uh, really?)
+ * @param callback
+ */
 Phaser.Plugin.PathFinderPlugin.prototype.setCallbackFunction = function (callback) {
     this._callback = callback;
 };
 
+/**
+ * Prepare pathcalculation for easystar.
+ *
+ * @param from  array 0: x-coords, 1: y-coords ([x,y])
+ * @param to    array 0: x-coords, 1: y-coords ([x,y])
+ */
 Phaser.Plugin.PathFinderPlugin.prototype.preparePathCalculation = function (from, to) {
     if (this._callback === null || typeof this._callback !== "function") {
         throw new Error("No Callback set!");
@@ -48,6 +71,9 @@ Phaser.Plugin.PathFinderPlugin.prototype.preparePathCalculation = function (from
     this._prepared = true;
 };
 
+/**
+ * Start path calculation.
+ */
 Phaser.Plugin.PathFinderPlugin.prototype.calculatePath = function () {
     if (this._prepared === null) {
         throw new Error("no Calculation prepared!");
