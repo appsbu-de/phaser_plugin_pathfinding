@@ -38,10 +38,26 @@ Phaser.Plugin.PathFinderPlugin.prototype.setGrid = function (grid, walkables, it
     this._easyStar.setGrid(this._grid);
     this._easyStar.setAcceptableTiles(this._walkables);
 
+    // initiate all walkable tiles with cost 1 so they will be walkable even if they are not on the grid map, jet.
+    for (var i = 0; i < walkables.length; i++)
+    {
+        this.setTileCost(walkables[i], 1);
+    }
+
     if (iterationsPerCount !== null) {
         this._easyStar.setIterationsPerCalculation(iterationsPerCount);
     }
 };
+
+/**
+ * Sets the tile cost for a particular tile type.
+ *
+ * @param {Number} The tile type to set the cost for.
+ * @param {Number} The multiplicative cost associated with the given tile.
+ */
+Phaser.Plugin.PathFinderPlugin.prototype.setTileCost = function (tileType, cost) {
+    this._easyStar.setTileCost(tileType, cost);
+}
 
 /**
  * Set callback function (Uh, really?)
