@@ -4,7 +4,7 @@ var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'gameContainer', { preload: 
 function preload() {
 
     game.load.tilemap('desert', 'assets/desert.json', null, Phaser.Tilemap.TILED_JSON);
-    game.load.tileset('tiles', 'assets/tmw_desert_spacing.png', 32, 32, -1, 1, 1);
+    game.load.image('tiles', 'assets/tmw_desert_spacing.png');
     game.load.image('car', 'assets/car90.png');
 
 }
@@ -22,17 +22,15 @@ var blocked = false;
 function create() {
 
     map = game.add.tilemap('desert');
-
-    tileset = game.add.tileset('tiles');
+    map.addTilesetImage('Desert', 'tiles');
+    currentTile = map.getTile(2, 3);
+    layer = map.createLayer('Ground');
+    layer.resizeWorld();
 
     var walkables = [30];
 
     pathfinder = game.plugins.add(Phaser.Plugin.PathFinderPlugin);
     pathfinder.setGrid(map.layers[0].data, walkables);
-
-    layer = game.add.tilemapLayer(0, 0, 800, 600, tileset, map, 0);
-
-    layer.resizeWorld();
 
     sprite = game.add.sprite(450, 80, 'car');
     sprite.anchor.setTo(0.5, 0.5);
