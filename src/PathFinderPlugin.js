@@ -32,7 +32,15 @@ Phaser.Plugin.PathFinderPlugin.prototype.constructor = Phaser.Plugin.PathFinderP
 Phaser.Plugin.PathFinderPlugin.prototype.setGrid = function (grid, walkables, iterationsPerCount) {
     iterationsPerCount = iterationsPerCount || null;
 
-    this._grid = grid;
+    this._grid = [];
+    for (var i = 0; i < grid.length; i++)
+    {
+        this._grid[i] = []
+        for (var j = 0; j < grid[i].length; j++)
+        {
+            this._grid[i][j] = grid[i][j].index
+        }
+    }
     this._walkables = walkables;
 
     this._easyStar.setGrid(this._grid);
