@@ -1,3 +1,6 @@
+## July, 09th 2014 - V0.2.0
+- using gulp and bower to bundle easystar and create a bundle plugin package.
+
 ## March, 16th 2014 - V0.1.2
 - Updated to Phaser 2.0.0
 - Fixed Example to work with new arcade physics
